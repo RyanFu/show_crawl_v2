@@ -12,7 +12,7 @@
 require 'bundler/capistrano'
 #require 'sidekiq/capistrano'
 set :application, "tv_show"
-set :rails_env, "production"
+set :rails_env, :production
 set :repository, "https://github.com/abooyaya/show_crawl_v2.git"
 set :scm, "git"
 set :user, "deploy" # 一個伺服器上的帳戶用來放你的應用程式，不需要有sudo權限，但是需要有權限可以讀取Git repository拿到原始碼
