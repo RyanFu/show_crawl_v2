@@ -1,0 +1,28 @@
+<h1>Listing ep_v2s</h1>
+
+<%= form_for "", :url => search_ep_v2s_path, :method => :put do |f|%>
+
+<%= f.text_field "search" %><br />
+
+<% end %>
+
+<%= will_paginate @eps %>
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @eps.each do |ep| %>
+  <tr>
+    <td><%= ep.title %></td>
+    <td><%= link_to 'Show', ep %></td>
+    <td><%= link_to 'Edit', edit_ep_v2_path(ep) %></td>
+    <td><%= link_to 'Destroy', ep, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+<%= link_to 'Go TV Show V1', eps_path %>

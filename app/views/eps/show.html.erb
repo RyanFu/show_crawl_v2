@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+<%= @ep.title %> </br>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @ep.sources.each do |source| %>
+  <tr>
+    <td> <%= link_to source.link, source.link %></td>
+    <td><%= link_to 'Edit', edit_source_path(source) %></td>
+    <td><%= link_to 'Destroy', source, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+<% end %>
+</table>
+<br>
+new source: <%= link_to 'New', new_source_path({:ep_id => @ep.id}) %> <br>
+<br>
+<%= link_to 'Edit', edit_ep_path(@ep) %> |
+<%= link_to 'Back', eps_path %>
