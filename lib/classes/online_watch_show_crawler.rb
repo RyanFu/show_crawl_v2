@@ -57,7 +57,7 @@ class OnlineWatchShowCrawler
       s = SourceV2.new
       #s.ep_id = ep.id
       if EpV2.all.size > 0
-        s.ep_v2_id = Ep.last.id + 1
+        s.ep_v2_id = EpV2.last.id + 1
       else
         s.ep_v2_id = 0
       end      
