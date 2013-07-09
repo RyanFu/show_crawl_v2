@@ -33,7 +33,7 @@ every :day, :at => '09:01am' do
   #rake 'crawl:update_link_v2',:output => {:error => 'log/error.log', :standard => 'log/cron.log'}
 end
 
-every :day, :at => '09:32pm' do
+every :day, :at => '09:32am' do
  # rake 'crawl:crawl_youtube',:output => {:error => 'log/error.log', :standard => 'log/cron.log'}
   rake 'crawl:crawl_taiwan_hearts',:output => {:error => 'log/error.log', :standard => 'log/cron.log'}
  # rake 'crawl:crawl_banana_idol',:output => {:error => 'log/error.log', :standard => 'log/cron.log'}
@@ -43,7 +43,7 @@ every :day, :at => '09:32pm' do
   #rake 'crawl:update_link_v2',:output => {:error => 'log/error.log', :standard => 'log/cron.log'}
 end
 
-every :day, :at => '10:02pm' do
+every :day, :at => '10:02am' do
  # rake 'crawl:crawl_youtube',:output => {:error => 'log/error.log', :standard => 'log/cron.log'}
   #rake 'crawl:crawl_taiwan_hearts',:output => {:error => 'log/error.log', :standard => 'log/cron.log'}
   rake 'crawl:crawl_banana_idol',:output => {:error => 'log/error.log', :standard => 'log/cron.log'}
@@ -53,7 +53,7 @@ every :day, :at => '10:02pm' do
   #rake 'crawl:update_link_v2',:output => {:error => 'log/error.log', :standard => 'log/cron.log'}
 end
 
-every :day, :at => '11:02pm' do
+every :day, :at => '11:02am' do
  # rake 'crawl:crawl_youtube',:output => {:error => 'log/error.log', :standard => 'log/cron.log'}
   #rake 'crawl:crawl_taiwan_hearts',:output => {:error => 'log/error.log', :standard => 'log/cron.log'}
  # rake 'crawl:crawl_banana_idol',:output => {:error => 'log/error.log', :standard => 'log/cron.log'}
