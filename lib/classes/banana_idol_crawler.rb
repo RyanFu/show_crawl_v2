@@ -46,6 +46,8 @@ class BananaIdolCrawler
                 end
 
                 sources.each{|s| s.ep_v2_id = ep.id; s.save; } if ep.save
+                break
+
               end
 
             elsif node.previous_element.css("strong").text == "洪基 藤井美菜 Lists"
