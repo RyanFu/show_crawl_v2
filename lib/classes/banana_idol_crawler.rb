@@ -144,6 +144,7 @@ class BananaIdolCrawler
         end
 
         ep_index = titles_hash[show.name]
+
         eps_nodes =  @page_html.css(".wp-tab-content-wrapper h4 ul")[ep_index]
         eps = eps_nodes.css("li a")
 

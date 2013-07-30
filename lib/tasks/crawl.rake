@@ -39,11 +39,11 @@ namespace :crawl do
   task :crawl_youtube => :environment do
     c = YoutubeAccessor.new
     ShowV2.all.each do |show|
-    if show.link.index("youtube")
-      puts show.name
-      c.init_client
-      c.load_ytvideos_to_db show
-    end
+      if show.link.index("youtube")
+        puts show.name
+        c.init_client
+        c.load_ytvideos_to_db show
+      end
     end
     update_link_v2
   end 
@@ -51,10 +51,10 @@ namespace :crawl do
   task :crawl_taiwan_hearts => :environment do
     c = TaiwanHeartsCrawler.new
     ShowV2.all.each do |show|
-    if show.link.index("taiwanhearts")
-      puts show.name
-      c.parse_eps show
-    end
+      if show.link.index("taiwanhearts")
+        puts show.name
+        c.parse_eps show
+      end
     end
     update_link_v2
   end
@@ -62,10 +62,12 @@ namespace :crawl do
   task :crawl_banana_idol => :environment do
     c = BananaIdolCrawler.new
     ShowV2.all.each do |show|
-    if show.link.index("bananaidolshow")
-      puts show.name
-      c.parse_eps show
-    end
+      skipids = [113,115,116,117,118,120,121,122,123]
+      next if skipids.include? show.id
+      if show.link.index("bananaidolshow")
+        puts show.name
+        c.parse_eps show
+      end
     end
     update_link_v2
   end
@@ -73,10 +75,10 @@ namespace :crawl do
   task :crawl_online_show => :environment do
     c = OnlineWatchShowCrawler.new
     ShowV2.all.each do |show|
-    if show.link.index("fhqp31hmre")
-      puts show.name
-      c.parse_eps show
-    end
+      if show.link.index("fhqp31hmre")
+        puts show.name
+        c.parse_eps show
+      end
     end
     update_link_v2
   end
@@ -84,10 +86,10 @@ namespace :crawl do
   task :crawl_ck101 => :environment do
     c = CK101Crawler.new
     ShowV2.all.each do |show|
-    if show.link.index("ck101")
-      puts show.name
-      c.parse_eps show
-    end
+      if show.link.index("ck101")
+        puts show.name
+        c.parse_eps show
+      end
     end
     update_link_v2
   end
@@ -95,10 +97,10 @@ namespace :crawl do
   task :crawl_love_tv => :environment do
     c = LoveTvShowCrawler.new
     ShowV2.all.each do |show|
-    if show.link.index("vslovetv")
-      puts show.name
-      c.parse_eps show
-    end
+      if show.link.index("vslovetv")
+        puts show.name
+        c.parse_eps show
+      end
     end
     update_link_v2
   end
