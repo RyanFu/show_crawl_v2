@@ -7,7 +7,7 @@ class GcmSender
   #type0, 1, 2,3
 
   def sendMessage type_id, message
-    gcm = GCM.new("AIzaSyD4YCkceBSRS0nG1SXgR0-CH7knhpo2o-w")
+    gcm = GCM.new("AIzaSyA5dEbTpjKcNf0d9m14sVmIuuMQtId1vrA")
 
     Device.select("id, registration_id").find_in_batches( :batch_size => 1000, :conditions => ['id >= ? AND id <= ?', 0, 10000] ) do |devices|
 

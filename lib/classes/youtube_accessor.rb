@@ -86,7 +86,20 @@ class YoutubeAccessor
             s.ep_v2_id  = ep.id
             source_link = youtube_link(all.player_url)
             s.link = source_link
-            s.save        
+            s.save
+          elsif ((all.title.include? "幸福空间") and (show.id == 170))
+            #p all.title
+            ep = EpV2.new
+            ep.show_id = show.id
+            ep.title = all.title
+            ep.save
+
+            #p all.player_url
+            s = SourceV2.new
+            s.ep_v2_id  = ep.id
+            source_link = youtube_link(all.player_url)
+            s.link = source_link
+            s.save                    
           end
         end
       end  

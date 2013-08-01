@@ -46,6 +46,8 @@ class BananaIdolCrawler
                 end
 
                 sources.each{|s| s.ep_v2_id = ep.id; s.save; } if ep.save
+                break
+
               end
 
             elsif node.previous_element.css("strong").text == "洪基 藤井美菜 Lists"
@@ -142,6 +144,7 @@ class BananaIdolCrawler
         end
 
         ep_index = titles_hash[show.name]
+
         eps_nodes =  @page_html.css(".wp-tab-content-wrapper h4 ul")[ep_index]
         eps = eps_nodes.css("li a")
 
