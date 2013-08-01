@@ -228,7 +228,20 @@ class BananaIdolCrawler
     crawler.fetch link
     sources = []
 
-    if crawler.page_html.css(".entry p iframe").present?
+    if crawler.page_html.css(".wp-tab-content-wrapper iframe").present?    
+      nodes = crawler.page_html.css(".wp-tab-content-wrapper iframe")
+      nodes.each do |node|
+        s = SourceV2.new
+        if EpV2.all.size > 0
+          s.ep_v2_id = EpV2.last.id + 1
+        else
+          s.ep_v2_id = 0
+        end
+        s.link = node.attr("src").to_s
+        sources << s
+      end
+
+    elsif crawler.page_html.css(".entry p iframe").present?
       nodes = crawler.page_html.css(".entry p iframe")
       nodes.each do |node|
         #puts node.attr("src")
@@ -277,18 +290,7 @@ class BananaIdolCrawler
         sources << s
       end
 
-    elsif crawler.page_html.css(".wp-tab-content-wrapper iframe").present?
-      nodes = crawler.page_html.css(".wp-tab-content-wrapper iframe")
-      nodes.each do |node|
-        s = SourceV2.new
-        if EpV2.all.size > 0
-          s.ep_v2_id = EpV2.last.id + 1
-        else
-          s.ep_v2_id = 0
-        end
-        s.link = node.attr("src").to_s
-        sources << s
-      end
+    
 
     else
       s = SourceV2.new
