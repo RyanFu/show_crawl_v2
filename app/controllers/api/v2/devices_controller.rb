@@ -1,8 +1,20 @@
 class Api::V2::DevicesController < ApplicationController
   def create
-  #	registration_id = params[:registration_id]
-  #	device_id = params[:device_id]
+  	registration_id = params[:registration_id]
+  	device_id = params[:device_id]
+
+    device = Device.new
+    device.registration_id = registration_id
+    device.device_id = device_id
+
+    if device.save
+      render :status=>200, :json=>{:message => "success"}
+    else
+      render :status=>401, :json=>{:message=> "create fail" }
+    end
     
+
+
     #@device = Device.where("registration_id = ?", registration_id)[0]
     
   #  if @device
@@ -18,6 +30,6 @@ class Api::V2::DevicesController < ApplicationController
   #  else
   #    render :status=>401, :json=>{:message=> "create fail" }
   #  end
-    render :status=>200, :json=>{:message => "success"}
+  #  render :status=>200, :json=>{:message => "success"}
   end	
 end
