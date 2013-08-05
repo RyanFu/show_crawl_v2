@@ -231,7 +231,27 @@ class BananaIdolCrawler
     crawler.fetch link
     sources = []
 
-    if crawler.page_html.css(".wp-tab-content-wrapper iframe").present?    
+    if crawler.page_html.css(".myYoutubePlaylist_clearer script").present?
+      nodes = crawler.page_html.css(".myYoutubePlaylist_clearer script")
+
+      nodes.each do |node|
+        video_str = node.text
+        ids_str = /myYoutubePlaylist_dl\('(.*)','myYoutubePlaylist_YoutubePlaylist/ .match(video_str)
+        ids = $1.split(", ")
+        
+        ids.each do |id|
+          s = SourceV2.new
+          if EpV2.all.size > 0
+            s.ep_v2_id = EpV2.last.id + 1
+          else
+            s.ep_v2_id = 0
+          end
+          s.link = "http://www.youtube.com/watch?v=" + id.to_s
+          sources << s 
+        end
+      end
+
+    elsif crawler.page_html.css(".wp-tab-content-wrapper iframe").present?    
       nodes = crawler.page_html.css(".wp-tab-content-wrapper iframe")
       nodes.each do |node|
         s = SourceV2.new
@@ -260,25 +280,7 @@ class BananaIdolCrawler
         sources << s 
       end
 
-    elsif crawler.page_html.css(".myYoutubePlaylist_clearer script").present?
-      nodes = crawler.page_html.css(".myYoutubePlaylist_clearer script")
-
-      nodes.each do |node|
-        video_str = node.text
-        ids_str = /myYoutubePlaylist_dl\('(.*)','myYoutubePlaylist_YoutubePlaylist/ .match(video_str)
-        ids = $1.split(", ")
-        
-        ids.each do |id|
-          s = SourceV2.new
-          if EpV2.all.size > 0
-            s.ep_v2_id = EpV2.last.id + 1
-          else
-            s.ep_v2_id = 0
-          end
-          s.link = "http://www.youtube.com/watch?v=" + id.to_s
-          sources << s 
-        end
-      end
+    
 
     elsif crawler.page_html.css(".entry embed").present?
       nodes = crawler.page_html.css(".entry embed")
