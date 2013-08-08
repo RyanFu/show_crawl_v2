@@ -32,7 +32,12 @@ ShowCrawl::Application.routes.draw do
       resources :eps    
     end
     namespace :v2 do
-      resources :appprojects, :only => [:index]
+      resources :appprojects do
+        collection do
+          get 'promotion_info'
+        end
+      end
+      
       resources :shows do
         collection do
           get 'shows_info'
