@@ -62,7 +62,7 @@ namespace :crawl do
   task :crawl_banana_idol => :environment do
     c = BananaIdolCrawler.new
     ShowV2.all.each do |show|
-      skipids = [113,115,116,117,118,120,121,122,123]
+      skipids = [113,115,116,117,118,120,121,122,123,131]
       next if skipids.include? show.id
       if show.link.index("bananaidolshow")
         puts show.name
