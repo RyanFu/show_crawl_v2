@@ -33,8 +33,8 @@ class TaiwanHeartsCrawler
     crawler.fetch link
     sources = []
 
-    if crawler.page_html.css(".article-content iframe").present?
-      nodes = crawler.page_html.css(".article-content iframe")
+    if crawler.page_html.css("iframe").present?
+      nodes = crawler.page_html.css("iframe")
       nodes.each do |node|
         s = SourceV2.new
         if EpV2.all.size > 0
