@@ -10,7 +10,7 @@ class TaiwanHeartsCrawler
     fetch show.link
 
     nodes = @page_html.css("td a")
-    nodes.reverse_each do |node|
+    nodes.each do |node|
       title = node.text
       link = node.attr("href")
 
